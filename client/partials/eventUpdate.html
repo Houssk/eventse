@@ -1,0 +1,43 @@
+<div class='container-fluid container-form'>
+  <h1 align='center'>Modifier un événement</h1>
+  
+  <form data-toggle="validator" role="form"  ng-submit='updateEvent()'>
+    <div class='form-group'>
+      <label for='name'>Nom :</label>
+      <input type='text' class='form-control' placeholder="Nom de l'événement" required ng-model='event.name'>
+      
+      <br>
+      <label for='desc'>Description :</label>
+      <input type='text' class='form-control' placeholder="Description de l'événement" required ng-model='event.description'>
+      
+      <br>
+      <label for='date'>Date :</label>
+      <input type='text' id = 'date' class='form-control' placeholder="Ouvrir le calendrier" required readonly ng-model='event.date'>
+
+      <br>
+      <div ng-controller="mapUpdateEventCtrl">
+        <!-- This input has special css in maincontent.css. DO NOT MODIFY THE CLASS controls -->
+        <input id="pac-input" class="controls" type="text" placeholder="Entrer l'adresse de l'événement"  required ng-model='event.address'>
+        <ng-map id="map">
+        </ng-map>
+      </div>
+
+      <br>
+      <label for='confidentiality'>Confidentialité:</label>
+      <toggle-switch
+              ng-model="event.isPublic"
+              on-label="Public"
+              off-label="Privé" >
+      </toggle-switch>
+    </div>
+    
+    <!-- if we apply text-align:center property to the parent div, labels are also centered. With this additionnal div, only the button is centered -->
+    <div style='text-align:center;'>
+      
+      <!-- The ng-if condition is to make sure that only the creator of the event can modify it -->
+      <button type='submit' class='btn btn-orange' ng-if="event.author === auth.getUser().username">Modifier</button>
+    </div>
+  </form>
+  
+  
+</div>

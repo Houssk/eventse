@@ -1,0 +1,33 @@
+<div class='container-fluid'>
+  
+  <br>
+  <input type="text"  placeholder="  Chercher un evenement  "  ng-model="query">
+  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+
+  <a href="#/mapEvents" class="btn btn-orange" style="margin-left: 20px;">Afficher sur la carte</a>
+
+  <div class='row'>
+    <h3 ng-if="events.length === 0">Vous n'avez aucun événement.</h3>
+
+    <div class='container-event' ng-repeat='event in events | filter:query'>
+      <a href='#/events/{{ event._id }}' >
+        <div class='container-img'>
+          <img ng-src='uploads/covers/{{ event.coverPath }}' />
+        </div>
+        <div class='container-description'>
+
+          <p class='eventName'> {{ event.name }} </p>
+          <p class='eventAuthor'> by {{ event.author }} </p>
+          <p class='eventMeta'> 
+            <span> {{ event.date | date }} - </span>
+            <span><i class='fa fa-eye'></i> {{ event.viewCount }} </span>
+          </p>
+         
+          <p class='eventDescripton'> {{ event.description }} </p>
+          
+        </div>
+      </a>
+    </div>
+    
+  </div>
+</div>

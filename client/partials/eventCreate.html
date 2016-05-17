@@ -1,0 +1,57 @@
+<div class='container-fluid container-form'>
+  <h1 align='center'>Créer un événement</h1>
+  
+  <form data-toggle="validator" role="form"  ng-submit='createEvent()'>
+    <div class='form-group'>
+      <label for='name'>Nom :</label>
+      <input type='text' class='form-control' placeholder="Nom de l'événement" required ng-model='event.name'>
+      
+      <br>
+      <label for='desc'>Description :</label>
+      <input type='text' class='form-control' placeholder="Description de l'événement" required ng-model='event.description'>
+      
+      <br>
+      <label for='date'>Date :</label>
+      <!--<input type='date' class='form-control' placeholder="mm/dd/yyyy" required ng-model='event.date'>-->
+      <input type='text' id = 'date' class='form-control' placeholder='Ouvrir le calendrier' readonly required ng-model='event.date'/>
+      
+      <br>
+      <label for='eventCover'>Image :</label>
+      <div class="input-group">
+        <span class="input-group-btn">
+          <span class="btn btn-orange btn-file">Parcourir&hellip;
+            <input type='file' class='form-control' image-model='event.cover' ng-file-preview="onFileSelect($files)" required>
+          </span>
+        </span>
+        <input type="text" class="form-control" value="{{filePreview.name}}" readonly>
+      </div>
+
+      <div ng-if='coverPreview' class='container-imgPreview'>
+        <img ng-src='{{coverPreview}}' />
+      </div>
+
+      <br>
+      <div ng-controller="MyCtrl">
+        <!-- This input has special css in maincontent.css. DO NOT MODIFY THE CLASS controls -->
+        <input id="pac-input" class="controls" type="text" placeholder="Entrer l'adresse de l'événement"  required ng-model='event.address'>
+        <ng-map id="map">
+        </ng-map>
+      </div>
+
+      <br>
+      <label for='confidentiality'>Confidentialité:</label>
+      <toggle-switch
+              ng-model="event.isPublic"
+              on-label="Public"
+              off-label="Privé" >
+      </toggle-switch>
+    </div>
+    
+    <!-- if we apply text-align:center property to the parent div, labels are also centered. With this additionnal div, only the button is centered -->
+    <div style='text-align:center;'>
+      <button type='submit' class='btn btn-orange'>Créer</button>
+    </div>
+  </form>
+  
+  
+</div>

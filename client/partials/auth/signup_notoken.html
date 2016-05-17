@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+
+    <h1><span class="fa fa-arrow-circle-o-up"></span> Inscription</h1>
+
+    <div class="alert alert-danger" ng-show="error_message">{{ error_message }}</div>
+
+    <!-- SIGNUP FORM -->
+    <form class="auth-form" ng-submit="signupNoToken()">
+      
+      <div class="form-group has-feedback" ng-class="successOrError_email">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" ng-model="email"  ng-keyup="checkEmail()" popover-placement="bottom" uib-popover="{{popover_email}}" popover-trigger="mouseenter" autofocus required>
+        <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_email" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group has-feedback" ng-class="successOrError_username">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" ng-model="username" ng-keyup="checkUsername()" popover-placement="bottom" uib-popover="{{popover_username}}" popover-trigger="mouseenter" autofocus required>
+        <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_username" aria-hidden="true"></span>
+      </div>
+      
+      <div class="form-group has-feedback" ng-class="successOrError_password">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ng-model="password" ng-keyup="checkPassword(); checkConfirmPassword()" popover-placement="bottom" uib-popover="{{popover_password}}" popover-trigger="mouseenter" required>
+        <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_password" aria-hidden="true"></span>
+      </div>
+
+      <div class="form-group has-feedback" ng-class="successOrError_confirmPassword">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="confirmPassword" ng-model="confirmPassword" ng-keyup="checkConfirmPassword()" popover-placement="bottom" uib-popover="{{popover_confirmPassword}}" popover-trigger="mouseenter" required>
+        <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_confirmPassword" aria-hidden="true"></span>
+      </div>
+
+      <button type="submit" class="btn btn-success btn-lg" ng-disabled="formIsValid()">S'enregistrer</button>
+
+    </form>
+
+    <hr>
+
+  </div>
+</div>

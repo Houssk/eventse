@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>event'se</title>
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.1.9/css/xeditable.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/maincontent.css">
+    <link rel="stylesheet" href="css/dropzone.min.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="css/ngGallery.css">
+    <link rel="stylesheet" href="css/angular-toggle-switch-bootstrap-3.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+  </head>
+  
+  <body ng-app='myApp'>
+    <header>
+      <nav class="navbar-perso">
+        <div class="container-fluid">
+
+          <!-- overflow:hidden for the logo animation when we click it -->
+          <div id="container-logo" class="pull-left">
+            <a id="home-link" href="#/events"><img class="logo" src="img/logo.png" /></a>
+          </div>
+
+          <ul class="nav navbar-nav-perso navbar-right">
+            <li>
+              <p class="navbar-btn">
+                <a href="#/login" ng-if="!auth.isLoggedIn()" class="btn btn-orange">Connexion</a>
+              </p>
+            </li>
+            <li>
+              <p class="navbar-btn">
+                <a href="#/register" ng-if="!auth.isLoggedIn()" class="btn btn-orange">Inscription</a>
+              </p>
+            </li>
+            <li>
+              <div class="navbar-btn dropdown">
+                <div ng-if="auth.isLoggedIn()" class="btn btn-dropdown-perso dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{ auth.getUser().username }}
+                  <span class="fa fa-angle-down"></span>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li><a href='#/create_event'>Créer un événement</a></li>
+                  <li><a href='#/myevents'>Mes événements</a></li>
+                  <li><a href='#/myinvitations'>Mes invitations</a></li>
+                  <li><a href='#/profile'>Profil</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li ng-controller="logoutCtrl">
+                    <a href="/" ng-click='logout()'>Se déconnecter</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <main>
+      
+      <div ng-view class="container"></div>
+      
+    </main>
+    
+
+    <!-- Resources -->
+    <script src='./resources/angular.min.js'></script>
+    <script defer src='./resources/angular-route.min.js'></script>
+    <script defer src="http://maps.google.com/maps/api/js?libraries=places"></script>
+    <script defer src='./resources/ng-map.min.js'></script>
+    
+    <!-- Modules -->
+    <script src='js/app.js'></script>
+    
+    <!-- Controllers -->
+    <script src="js/controllers/authControllers.js"></script>
+    <script defer src="js/controllers/eventControllers.js"></script>
+    <script defer src="js/controllers/googleControllers.js"></script>
+    
+    <!-- Services -->
+    <script src="js/services/authentication.js"></script>
+    <script defer src="js/services/multipartForm.js"></script>
+    <script defer src="js/services/registration.js"></script>
+    <script defer src="js/services/eventLocation.js"></script>
+    
+    <!-- Directives -->
+    <script defer src="js/directives/imageModel.js"></script>
+    <script defer src="js/directives/dropzone-directive.js"></script>
+    <script defer src="js/directives/ngGallery.js"></script>
+    <script defer src="js/directives/filePreview.js"></script>
+    <script defer src="js/directives/angular-toggle-switch.js"></script>
+
+    <!-- Scripts at the end to render the page faster -->
+    <!-- JQuery -->
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script defer src="js/jspage/custom.js"></script>
+    <script defer src='./resources/angular-animate.min.js'></script><!-- must be after jquery -->
+    <script defer src="js/jspage/dropzone.min.js"></script>
+    <script defer src="js/jspage/jquery.datetimepicker.full.js"></script>
+    <!-- Boostrap core JavaScript -->
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Angular UI Bootstrap -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+    <!-- Editable -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.1.9/js/xeditable.min.js"></script>
+    </script>
+
+  </body>
+</html>

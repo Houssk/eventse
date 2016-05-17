@@ -1,0 +1,52 @@
+<div class="page-header text-center">
+  <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+</div>
+
+<div class="row">
+
+  <!-- LOCAL INFORMATION -->
+  <div class="col-sm-6">
+    <div class="well">
+      <h3><span class="fa fa-user"></span> {{ auth.getUser().username }}</h3>
+
+      <p>
+        <strong>Nom</strong>: <a href="#" editable-text="auth.getUser().username" onbeforesave="updateUser($data)">{{ auth.getUser().username || 'empty' }}</a><br>
+        <strong>Email</strong>: {{ auth.getUser().email || 'empty' }}<br>
+
+        <button id='editPasswordBtn' type='submit' class='btn btn-orange' onclick="$(this).toggle();$('#editPassword').toggle();">Modifier mon mot de passe</button>
+   
+        <div class="alert alert-success" ng-show="success_message">{{ success_message }}</div>
+        <div class="alert alert-danger" ng-show="error_message">{{ error_message }}</div>
+
+        <div style='display:none; overflow:auto' id='editPassword'>
+
+          <form class="auth-form" ng-submit="updatePassword()">
+            <div class="form-group has-feedback" ng-class="successOrError_oldPassword">
+              <label for="oldPassword">Ancien Mot de Passe</label>
+              <input type="password" class="form-control" id="oldPassword" ng-model="oldPassword" ng-keyup="checkOldPassword()" popover-placement="bottom" uib-popover="{{popover_oldPassword}}" popover-trigger="mouseenter" required>
+              <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_oldPassword" aria-hidden="true"></span>
+            </div>
+
+            <div class="form-group has-feedback" ng-class="successOrError_password">
+              <label for="password">Nouveau Mot de Passe</label>
+              <input type="password" class="form-control" id="password" ng-model="password" ng-keyup="checkPassword(); checkConfirmPassword()" popover-placement="bottom" uib-popover="{{popover_password}}" popover-trigger="mouseenter" required>
+              <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_password" aria-hidden="true"></span>
+            </div>
+
+            <div class="form-group has-feedback" ng-class="successOrError_confirmPassword">
+              <label for="confirmPassword">Confirmer Nouveau Mot de passe</label>
+              <input type="password" class="form-control" id="confirmPassword" ng-model="confirmPassword" ng-keyup="checkConfirmPassword()" popover-placement="bottom" uib-popover="{{popover_confirmPassword}}" popover-trigger="mouseenter" required>
+              <span class="glyphicon form-control-feedback" ng-class="glyphiconStatus_confirmPassword" aria-hidden="true"></span>
+            </div>
+          
+            <button type="submit" class="btn btn-success btn-lg" ng-disabled="formIsValid()" onclick="$('#editPassword').toggle();">Valider</button>
+            <button type="button" class='btn btn-orange' onclick="$('#editPassword').toggle();$('#editPasswordBtn').toggle();">Annuler</button>
+          </form>
+
+        </div>
+      </p>
+
+    </div>
+  </div>
+
+</div>

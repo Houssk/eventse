@@ -1,0 +1,118 @@
+<div class='container-single-event'>
+  <div class='row'>
+    <div class='container-img'>
+      <img ng-src='uploads/covers/{{ event.coverPath }}' />
+    </div>
+    <div ng-init="tab = 1">
+      <ul id="event-tabbar">
+        <!-- comment between li elems to remove the small gap -->
+        <li ng-click="tab = 1">Infos</a></li><!--
+        --><li ng-click="tab = 2">Commentaires</a></li><!--
+        --><li ng-click="tab = 3">Photos</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="tab-content" ng-show="tab == 1">
+    <div class="row list-event-actions">
+      <!-- These buttons only appears for someone who is not the creator -->
+      <a href="" class="btn btn-orange" ng-click='registerForEvent(true)' ng-if='!showDelete && auth.isLoggedIn() && !isRegistered'>Participer</a>
+      <a href="" class="btn btn-orange" ng-click='registerForEvent(false)' ng-if='!showDelete && auth.isLoggedIn() && isRegistered'>Se désinscrire</a>
+      
+      <!-- Only the creator of event can see the buttons to modify, delete and search users -->
+      <button type='submit' class='btn btn-orange' onclick="$('#showSearchUsers').slideToggle();" ng-if='showDelete'>Inviter</button>
+      <a href="#/update_event/{{ event._id }}" class="btn btn-orange" ng-if='showDelete'>Modifier</a>
+      <button type='submit' class='btn btn-orange' onclick="$('#showDisclaimer').slideToggle();" ng-if='showDelete'>Supprimer</button>
+
+        <div style='display:none; overflow: auto' id='showDisclaimer'>
+          <br>
+          <p>Voulez vous supprimer l'event ?</p>
+          <button type='submit' class='btn btn-orange' ng-click='deleteEvent(event, auth.getUser().username)'>Oui</button>
+          <button type='submit' class='btn btn-orange' onclick="$('#showDisclaimer').slideToggle();">Non</button>
+        </div>
+        
+        <div style='display:none' id='showSearchUsers'>
+          <form id="searchbox-users" class="navbar-form" ng-submit="searchUser()" >
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="nameQuery" placeholder="Entrer un nom d'utilisateur">
+              <div class="input-group-btn">
+                <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </form>
+          
+          <p>{{ results.message }}</p>
+          <div id="results-search-users">
+            <div class='results-elem' ng-repeat='result in results'>
+              <p style='float:left'>{{ result.username }}</p>
+              <span style='float:right; cursor: pointer' ng-click='sendInvitation(result)' ng-if="!result.alreadyInvited">Envoyer une invitation</span>
+              <span style='float:right' ng-if="result.alreadyInvited">Déja invité</span>
+              <div style='clear: both;'></div>
+            </div>
+          </div>
+        </div>
+
+    </div> <!-- end list-event-actions -->
+
+
+    <h1>{{ event.name }}</h1>
+    <h3> Description : {{ event.description }}</h3>
+    <h3> Auteur : {{ event.author }}</h3>
+    <h3> Nombre de vues : {{ event.viewCount }}</h3>
+    <h3> Date : {{ event.date | date:"dd/MM/yyyy 'à' h:mma" }}</h3> <!-- Filter -->
+    <h3 onclick="$('.participant-list').slideToggle();" style="cursor:pointer;"> Participants <i class="fa fa-caret-down"></i> </h3>
+      <ul class="participant-list" ng-repeat="participant in event.participants">
+        <li>{{ participant }}</li><!--
+        -->
+      </ul>
+    <h3> Adresse : {{ event.address }}</h3>
+
+    <br>
+    <div ng-controller="mapSingleEventCtrl">
+      <ng-map id = "map"> </ng-map>
+    </div>
+  
+  </div> <!-- end div tab-1 -->
+
+  <div class="tab-content" ng-show="tab == 2">
+    <form id="comment-zone" ng-submit="addComment()">
+      <div class="form-group">
+        <textarea id="textzone" type="text" ng-model="message" name="text" placeholder="Ajouter un commentaire"></textarea>
+        <button type="submit" class="btn btn-orange btn-orange-small pull-right">Poster</button>
+      </div>
+    </form>
+    <h4> Commentaires :</h4>
+    <!-- reverse list to get newest message at top -->
+    <ul id="comments-section" ng-repeat="comment in event.comments.slice().reverse()">
+      <li class="comment" >
+        <span class="comment-author">{{ comment.author }}</span>{{ comment.message }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="tab-content" ng-show="tab == 3">
+    <!-- Only the creator of the event can add pictures -->
+    <div class="list-event-actions">
+      <button type='submit' class='btn btn-orange' onclick="$('#dropzoneDiv').slideToggle();" ng-if='showDelete'>Ajouter des photos</button>
+    </div>
+    
+    <div id="dropzoneDiv" class="row" style="display:none;" ng-controller="uploadFilesCtrl">
+      <div>
+        <form class="dropzone" dropzone="" id="dropzone">
+            <div class="dz-default dz-message">
+              Glisser et déposer une ou plusieurs photos ici, ou cliquer pour sélectionner des photos.
+            </div>
+        </form>
+      </div>
+      <br>
+      <div class="pull-right">
+        <button class="btn btn-orange" ng-click="uploadFiles()">Enregistrer les photos</button>
+        <button class="btn btn-orange" ng-click="reset()">Effacer la liste</button>
+      </div>
+    </div>
+
+    <h2>Photos</h2>
+    <ng-gallery images="gallery.pictures" delete-option="showDelete" event-id="event._id"></ng-gallery>
+    
+  </div> <!-- end div tab-3 -->
+</div>

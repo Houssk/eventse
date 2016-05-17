@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+
+    <h1><span class="fa fa-arrow-circle-o-up"></span> S'incrire</h1>
+
+    <div class="alert alert-success" ng-show="success_message">{{ success_message }}</div>
+    <div class="alert alert-danger" ng-show="error_message">{{ error_message }}</div>
+
+    <!-- SIGNUP FORM -->
+    <form class="auth-form" ng-submit="register(registerForm)">
+      <div class="form-group has-feedback" ng-class="registerForm.successOrError">
+        <label class="control-label" for="email">Email</label>        
+        <div class="input-group">
+          <span class="input-group-addon">@</span>
+          <input type="email" ng-keyup="checkEmail()" class="form-control" placeholder="prenom.nom" id="email" ng-model="registerForm.email" autofocus required>
+        </div>
+        <span class="glyphicon form-control-feedback" ng-class="registerForm.glyphiconStatus" aria-hidden="true"></span>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-orange btn-lg">Envoyer</button>
+      </div>
+    </form>
+
+    <div>
+        
+    </div>
+
+  </div>
+</div>

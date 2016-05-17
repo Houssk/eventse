@@ -1,0 +1,670 @@
+/* General */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.btn {
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.btn-xxl {
+  width: 200px;
+  font-size: 34px;
+  padding: 10px 15px;
+}
+
+.btn-orange {
+  color: #ffac33;
+  background-color: #fff;
+  border: 1px solid #ffac33;
+}
+
+.btn-orange:hover {
+  background-color: #ffac33;
+  color: #fff !important;
+}
+
+.btn-orange:focus {
+  color: #ffac33;
+  border: 1px solid #ffac33;
+}
+
+.btn-orange-small {
+  padding: 6px 4px;
+  font-size: 12px;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+  padding: 6px;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+/* Navigation bar (logo, login, signup) */
+.navbar-perso {
+  background-color: #333;
+}
+
+.navbar-nav-perso > li{
+  display: inline-block;
+}
+
+nav .logo {
+  height: 50px;
+  width: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+nav .btn-orange {
+  margin: 0 8px;
+  background-color: inherit;
+}
+
+nav .btn-orange:hover {
+  color: #666 !important;
+}
+
+nav .btn-dropdown-perso {
+  color: #ddd;
+  font-weight: 600;
+  margin-right: 20px;
+  border: none;
+}
+
+nav .btn-dropdown-perso:hover {
+  color: #fff;
+}
+
+nav .dropdown-menu {
+  box-shadow: none;
+}
+
+#container-logo {
+  overflow: hidden; /* for the logo animiation when we click it */
+  height: 60px; /* set the entire navbar to 60px height */
+}
+
+#home-link {
+  position:relative;
+}
+
+/* Disable collapse mode in navbar*/
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
+/* Relative to home.html */
+.home-container {
+  display: block;
+  text-align: center;
+  margin-top: 160px;
+}
+
+.home-container a:first-child {
+  margin-right: 30px;
+}
+
+/* Relative to eventAll.html */
+.container-event {
+  width: 33.33333%;
+  float: left;
+  padding: 25px 20px;
+  overflow: hidden;
+}
+
+.container-event a {
+  text-decoration: none;
+}
+
+.container-img {
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+}
+
+.container-img img {
+  left: 50%;
+  margin-left: -220px;
+  position: absolute;
+  height: 300px;
+  width: auto;
+  min-width: 300px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+.container-description {
+  color: #ffac33;
+  background-color: #f2f2f2;
+  height: 160px;
+  -webkit-transition: all .4s ease;
+  -moz-transition: all .4s ease;
+  -ms-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+.container-description p {
+  padding: 0 8px;
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.container-description .eventName {
+  padding-top: 4px;
+  font-size: 22px;
+  font-weight:500;
+  /* ellipsis on one line for long title */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container-description .eventAuthor {
+  color: #666;
+}
+
+.container-description .eventDescripton {
+  margin-top: 6px;
+  color: #666;
+  
+  /* Ellipsis on multiline for long description */
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 3.6em; /* Fallback for non-webkit. = line-height * nbLine */
+  line-height: 1.2em;
+  -webkit-line-clamp: 3; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container-event:hover .container-description {
+  color: #e28c10;
+  background-color: #e6e6e6;
+}
+
+.container-event:hover .container-img img {
+  left: 40%;
+}
+
+/* Relative to eventCreate.html */
+.container-form {
+  width: 50%;
+  max-width: 500px;
+  margin-bottom: 60px;
+}
+
+.container-form h1 {
+  color: #ffac33;
+  margin-bottom: 30px;
+}
+
+.container-form .container-imgPreview > img {
+  width: 100%;
+  margin-top: 15px;
+  margin-left: 0;
+  left: 0;
+  border-radius: 8px;
+}
+
+/* CSS for the google Map search-box */
+#pac-input {
+  background-color: #fff;
+  margin-left: 10px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 60%;
+  max-width: 300px;
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 31px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+/* Relative to eventSingle.html */
+.container-single-event {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+}
+
+.container-single-event .container-img img {
+  width: 100%;
+  margin-left: 0;
+  left: 0%;
+}
+
+.container-single-event #event-tabbar {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.container-single-event #event-tabbar li {
+  display: inline-block;
+  width: 33.3333%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  background-color: #ffac33;
+  border-right: 2px solid #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.container-single-event #event-tabbar li:last-child {
+  border: 0px;
+}
+
+.container-single-event #event-tabbar li:hover {
+  background-color: #fb8c00;
+}
+
+.container-single-event .list-event-actions {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.container-single-event #showSearchUsers {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.container-single-event #showSearchUsers #searchbox-users {
+  margin-top: 30px;
+}
+
+.container-single-event #showSearchUsers #searchbox-users input:focus {
+  border: solid 1px #ffac33;
+  -webkit-box-shadow: inset 0px 0px 3px #aaa;
+  box-shadow: inset 0px 0px 3px #aaa;
+}
+
+.container-single-event #showSearchUsers #searchbox-users .btn {
+  padding: 6px 12px;
+  margin-left: 0px;
+  border: solid 1px #c6c6c6;
+  background-color: #eee;
+}
+
+.container-single-event #showSearchUsers #searchbox-users .btn:hover {
+  background-color: #e0e0e0;
+}
+
+.container-single-event #showSearchUsers #results-search-users {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.container-single-event #showSearchUsers .results-elem {
+  padding: 8px 12px 0px 12px;
+  background-color: #e0e0e0;
+}
+
+.container-single-event #showSearchUsers .results-elem:nth-child(even) {
+  background-color: #efefef;
+}
+
+.container-single-event h1 {
+  color: #ffac33;
+  font-size: 36px;
+}
+
+.container-single-event h3 {
+  font-size: 20px;
+}
+
+.container-single-event ul.participant-list {
+  text-align: left;
+  margin: 0px auto;
+  padding: 0px;
+  max-width: 500px;
+  list-style: none;
+  display: none;
+}
+
+.container-single-event .participant-list li {
+  padding: 8px 12px;
+  background-color: #efefef;
+  border: solid 2px #999;
+  border-radius: 1px;
+  border-bottom: 0px;
+}
+
+.container-single-event .participant-list:last-of-type {
+  border-bottom: solid 2px #999;
+}
+
+
+.container-single-event #comment-zone {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.container-single-event #comment-zone #textzone {
+  width: 100%;
+  height: 60px;
+  padding: 12px 8px;
+  resize: none;
+  border-radius: 3px;
+}
+
+
+.container-single-event #comments-section {
+  list-style: none;
+  padding: 0;
+}
+
+.container-single-event #comments-section .comment {
+  background-color: #f4f4f4;
+  border-radius: 3px;
+  padding: 12px 8px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.container-single-event #comments-section .comment-author {
+  font-weight: bold;
+  color: #ffac33;
+  margin-right: 6px;
+}
+
+.container-single-event .tab-content.ng-hide-add, .container-single-event .tab-content.ng-hide-remove {
+  -webkit-transition: all linear .5s;
+  -moz-transition: all linear .5s;
+  -ms-transition: all linear .5s;
+  transition: all linear .5s;
+}
+
+.container-single-event .tab-content.ng-hide-add {
+  position: relative;
+  left: 0%;
+  opacity: 1;
+}
+.container-single-event .tab-content.ng-hide-add.ng-hide-add-active {
+  position: relative;
+  left: -100%;
+  opacity: 0;
+  height:0px;
+}
+.container-single-event .tab-content.ng-hide-remove {
+  position: relative;
+  left: 100%;
+  opacity: 0;
+  height:0px;
+}
+.container-single-event .tab-content.ng-hide-remove.ng-hide-remove-active {
+  position: relative;
+  left: 0%;
+  opacity: 1;
+}
+
+/* Spin glyphicon */
+.glyphicon-spin {
+  -webkit-animation: spin 1500ms linear infinite;
+  -moz-animation: spin 1500ms linear infinite;
+  -ms-animation: spin 1500ms linear infinite;
+  animation: spin 1500ms linear infinite;
+}
+@-ms-keyframes spin {
+  from { -ms-transform: rotate(0deg); }
+  to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
+}
+
+#map-container {
+  width: 100%;
+  height: 550px;
+  position: relative;
+}
+
+.eventsMap {
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+
+/* CSS rules for devices with screen smaller than  991px */
+@media only screen and (max-width: 991px) {
+   /* Reduce size of grid elements */
+  .container-img {
+    height: 150px;
+  }
+  
+  .container-img img {
+    height: 150px;
+    margin-left: -150px;
+    width: 100%;
+    min-width: none;
+  }
+  
+  .container-description {
+    height: 110px;
+  }
+  
+  .container-description .eventName {
+    font-size: 16px;
+  }
+  
+  .container-description .eventAuthor, 
+  .container-description .eventMeta {
+    font-size: 12px;
+  }
+
+  .container-description .eventDescripton {
+    height: 2.4em; /* Only lines of descriptopn */
+    font-size: 14px;
+    line-height: 1.2em;
+    -webkit-line-clamp: 2;
+  }
+  
+  /* Reduce size of form */
+  .container-form {
+    width: 70%;
+  }
+  
+  /* Keep size of img on single event page */
+  .container-single-event .container-img {
+    height: 300px;
+  }
+  
+  .container-single-event .container-img img {
+    height: 300px;
+  }
+}
+
+/* CSS rules for devices with screen smaller than  720px */
+@media only screen and (max-width: 720px) {
+  /* Change dispositon of event grid (list)*/
+  .container-event {
+    width: 100%;
+    padding: 15px 0px;
+  }
+  
+  .container-img {
+    float:left;
+    padding-left: 0px;
+    width: 30%;
+  }
+  
+  .container-description {
+    padding: 0 10px;
+    float: left;
+    width: 70%;
+    height: 150px; /* same as container-img defined in media query 960px */
+    font-size: .9em;
+  }
+  
+  .container-description h2{
+    font-size: 1.5em;
+  }
+  
+  /* Reduce size of button */
+  .btn-perso-white {
+    width: 130px;
+    font-size: 22px;
+  }
+  
+  .container-single-event .container-img {
+    float: none;
+    width: 100%;
+    height: 250px;
+  }
+}
+
+/* CSS rules for devices with screen smaller than  600px */
+@media only screen and (max-width: 600px) {
+
+  /* full screen form for small devices */
+  .container-form {
+    width: 100%;
+    font-size: 12px;
+  }
+  
+  .container-form h1 {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  /* Reduce size of button */
+  .btn-xxl {
+    width: 130px;
+    font-size: 22px;
+  }
+  
+  .home-container a:first-child {
+    margin-right: 10px;
+  }
+  
+  /* Change size of elements in navbar */
+  .navbar-nav {
+    margin: 0 -15px;
+  }
+  
+  nav .logo {
+    height: 35px;
+    margin-top: 2px;
+  }
+  
+  nav .btn-orange {
+    padding: 3px 10px;
+    font-size: .9em;
+  }
+  
+  nav .btn-dropdown-perso {
+    padding: 3px;
+  }
+  
+  #container-logo {
+    height: 42px; /* set the entire block height to 42px */
+  }
+  
+  #pac-input {
+    width: 50%;
+    min-width: 100px;
+    margin-left: 0px;
+  }
+  
+  /* Reduce size of tabbar in eventSingle */
+  .container-single-event #event-tabbar li {
+    height: 30px;
+    line-height: 30px;
+    border-right-width: 1px;
+    font-size: 14px;
+  }
+  
+  .container-single-event h1 {
+    font-size: 30px;
+  }
+  
+  .container-single-event h3 {
+    font-size: 16px;
+    }
+    
+    
+}
+
+@media only screen and (max-height: 640px) {
+  #map-container {
+    height: 400px;
+  }
+}
+

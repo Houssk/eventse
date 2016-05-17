@@ -1,0 +1,9 @@
+<div class='container-fluid'>
+  <br>
+
+  <p ng-if="invitations.length === 0">Vous n'avez aucune invitation.</p>
+  <div ng-repeat="invitation in invitations">
+    <p>{{ invitation.sender }} vous a invité pour l'événement <a ng-href="#/events/{{invitation.eventId}}">{{ invitation.eventName }}</a></p>
+  </div>
+  
+</div>
